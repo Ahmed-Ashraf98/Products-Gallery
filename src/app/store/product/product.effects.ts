@@ -22,7 +22,7 @@ export class ProductEffects {
 
   readonly fetchDataEffect$ = createEffect(() =>
     this._actions$.pipe(
-      ofType(ProductActions.loadProducts, ProductActions.loadCurrentProducts),
+      ofType(ProductActions.loadProducts, ProductActions.getProductById),
       map(() => {
         return ProductActions.setLoading({ isLoading: true });
       })
@@ -72,7 +72,7 @@ export class ProductEffects {
 
   readonly loadCurrentProduct$ = createEffect(() =>
     this._actions$.pipe(
-      ofType(ProductActions.loadCurrentProducts),
+      ofType(ProductActions.getProductById),
       switchMap((action) =>
         this._productService.getProductById(action.id).pipe(
           map((dataRes) => {

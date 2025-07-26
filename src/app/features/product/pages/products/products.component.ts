@@ -9,7 +9,6 @@ import { ProductCardComponent } from '../../components/productCard/productCard.c
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AsyncPipe } from '@angular/common';
-import { SkeletonModule } from 'primeng/skeleton';
 import { LoadingProductCardComponent } from '../../components/loadingProductCard/loadingProductCard.component';
 
 @Component({
@@ -18,7 +17,6 @@ import { LoadingProductCardComponent } from '../../components/loadingProductCard
     CommonModule,
     ProductCardComponent,
     AsyncPipe,
-    SkeletonModule,
     LoadingProductCardComponent,
   ],
   templateUrl: './products.component.html',
@@ -26,8 +24,7 @@ import { LoadingProductCardComponent } from '../../components/loadingProductCard
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
-  // private readonly _productsService = inject(ProductsService);
-  // private readonly _destroy$ = new Subject<void>();
+
   private readonly _router = inject(Router);
   private readonly _store = inject(Store);
   products$!: Observable<Product[]>;
@@ -36,11 +33,6 @@ export class ProductsComponent implements OnInit {
 
   getProducts() {
     this.products$ = this._store.select(ProductSelectors.selectProducts);
-    // this._store.select(ProductSelectors.selectProducts).subscribe({
-    //   next: (r) => {
-    //     console.log(r);
-    //   },
-    // });
   }
 
   getLoading() {
@@ -53,17 +45,6 @@ export class ProductsComponent implements OnInit {
 
   fetchAllProducts() {
     this._store.dispatch(ProductActions.loadProducts());
-    // this._productsService
-    //   .getAllProducts()
-    //   .pipe(takeUntil(this._destroy$))
-    //   .subscribe({
-    //     next: (productsList) => {
-    //       this.products = productsList;
-    //     },
-    //     error: (error) => {
-    //       console.error('Error fetching products:', error);
-    //     },
-    //   });
   }
 
   goToProductDetailsPage(productId: number) {

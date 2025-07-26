@@ -5,7 +5,7 @@ import { Product } from 'src/app/features/product/product.model';
 export const loadProducts = createAction('[Product] Load Products');
 
 // Load Current Products
-export const loadCurrentProducts = createAction(
+export const getProductById = createAction(
   '[Product] Load Current Products',
   props<{ id: number }>()
 );

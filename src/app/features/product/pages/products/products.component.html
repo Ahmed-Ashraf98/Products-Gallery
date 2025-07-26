@@ -11,10 +11,9 @@
       $index) {
       <app-loading-product-card />
       } } @else if (error$ | async) {
-      <!-- <app-err-msg
-          [message]="(error$ | async)!"
-          class="col-span-full"
-        ></app-err-msg> -->
+      <div class="text-center text-red-600 dark:text-red-400 text-lg py-10">
+        Failed to load product. Please try again.
+      </div>
       } @else { @for (product of products$ | async; track product.id) {
       <app-product-card
         [product]="product"
