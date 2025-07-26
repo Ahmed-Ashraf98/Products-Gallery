@@ -10,10 +10,17 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AsyncPipe } from '@angular/common';
 import { SkeletonModule } from 'primeng/skeleton';
+import { LoadingProductCardComponent } from '../../components/loadingProductCard/loadingProductCard.component';
 
 @Component({
   selector: 'app-products',
-  imports: [CommonModule, ProductCardComponent, AsyncPipe, SkeletonModule],
+  imports: [
+    CommonModule,
+    ProductCardComponent,
+    AsyncPipe,
+    SkeletonModule,
+    LoadingProductCardComponent,
+  ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
 })

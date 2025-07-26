@@ -1,6 +1,14 @@
 import { inject, Injectable } from '@angular/core';
 import { createEffect, ofType, Actions } from '@ngrx/effects';
-import { catchError, map, of, switchMap, tap, withLatestFrom } from 'rxjs';
+import {
+  catchError,
+  debounceTime,
+  map,
+  of,
+  switchMap,
+  tap,
+  withLatestFrom,
+} from 'rxjs';
 import * as ProductActions from './product.actions';
 import * as ProductSelectors from './product.selectors';
 import { Store } from '@ngrx/store';
@@ -24,6 +32,10 @@ export class ProductEffects {
   readonly setDataEffect$ = createEffect(() =>
     this._actions$.pipe(
       ofType(ProductActions.setProducts, ProductActions.setCurrentProduct),
+      tap(() => {
+        console.log('Ok');
+      }),
+      debounceTime(3000),
       map(() => {
         return ProductActions.setLoading({ isLoading: false });
       })
