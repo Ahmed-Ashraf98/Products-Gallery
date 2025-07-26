@@ -11,5 +11,14 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductDetailsComponent implements OnInit {
   private readonly _activatedRoute: ActivatedRoute = inject(ActivatedRoute);
 
+  productId: string | null = null;
+
+  getProductIdFromRoute() {
+    this.productId = this._activatedRoute.snapshot.paramMap.get('id');
+    if (!this.productId) {
+      console.error('Product ID not found in route parameters');
+    }
+  }
+
   ngOnInit(): void {}
 }

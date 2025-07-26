@@ -1,9 +1,9 @@
 import { Route } from '@angular/router';
 
 export const appRoutes: Route[] = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'main', pathMatch: 'full' },
   {
-    path: 'home',
+    path: 'main',
     loadComponent: () =>
       import('./core/layout/mainLayout.component').then(
         (c) => c.MainLayoutComponent

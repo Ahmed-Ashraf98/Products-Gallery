@@ -12,9 +12,9 @@ import { ButtonModule } from 'primeng/button';
 })
 export class ProductCardComponent {
   product = input.required<Product>();
-  onClick = output<number>();
+  onViewClick = output<number>();
 
   onViewDetails() {
-    this.onClick.emit(this.product().id);
+    this.onViewClick.emit(this.product().id);
   }
 }

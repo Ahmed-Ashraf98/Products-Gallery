@@ -4,6 +4,7 @@ import { Product } from '../../product.model';
 import { ProductsService } from '../../services/products.service';
 import { Subject, takeUntil } from 'rxjs';
 import { ProductCardComponent } from '../../components/productCard/productCard.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -15,6 +16,7 @@ export class ProductsComponent implements OnInit {
   products: Product[] = [];
   private readonly _productsService = inject(ProductsService);
   private readonly _destroy$ = new Subject<void>();
+  private readonly _router = inject(Router);
 
   fetchAllProducts() {
     this._productsService
@@ -28,6 +30,10 @@ export class ProductsComponent implements OnInit {
           console.error('Error fetching products:', error);
         },
       });
+  }
+
+  goToProductDetailsPage(productId: number) {
+    this._router.navigate(['main/products', productId]);
   }
 
   ngOnInit(): void {
