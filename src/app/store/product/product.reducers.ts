@@ -5,6 +5,11 @@ import * as ProductActions from './product.actions';
 export const productReducer = createReducer(
   initialProductState,
 
+  on(ProductActions.setProducts, (state, { products }) => ({
+    ...state,
+    products,
+  })),
+
   on(ProductActions.filiterProducts, (state, { filterObj }) => ({
     ...state,
     filteredProducts: [],

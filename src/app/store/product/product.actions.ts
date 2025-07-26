@@ -6,7 +6,7 @@ export const loadProducts = createAction('[Product] Load Products');
 
 // Load Current Products
 export const loadCurrentProducts = createAction(
-  '[Product] Load Products',
+  '[Product] Load Current Products',
   props<{ id: number }>()
 );
 

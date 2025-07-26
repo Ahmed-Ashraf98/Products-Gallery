@@ -47,6 +47,7 @@ export class ProductEffects {
               products: dataRes,
             });
           }),
+
           catchError(() => {
             return of(
               ProductActions.setError({ error: 'Unable to load products' })

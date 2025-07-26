@@ -7,12 +7,19 @@
     <div
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
     >
-      @for (product of products; track product.id) {
+      <h2>{{ isLoading$ | async }}</h2>
+      @if (true) { @for (_ of [1, 2, 3, 4, 5, 6, 7, 8]; track $index) { } }
+      @else if (error$ | async) {
+      <!-- <app-err-msg
+          [message]="(error$ | async)!"
+          class="col-span-full"
+        ></app-err-msg> -->
+      } @else { @for (product of products$ | async; track product.id) {
       <app-product-card
         [product]="product"
         (onViewClick)="goToProductDetailsPage($event)"
       ></app-product-card>
-      }
+      } }
     </div>
   </div>
 </div>

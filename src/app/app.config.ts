@@ -12,6 +12,8 @@ import { environment } from './environment/environment.prod';
 import { BASE_URL } from './token/app.tokens';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
+import { productReducer } from './store/product/product.reducers';
+import { ProductEffects } from './store/product/product.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -28,7 +30,9 @@ export const appConfig: ApplicationConfig = {
         },
       },
     }),
-    provideStore({}),
-    provideEffects(),
+    provideStore({
+      product: productReducer,
+    }),
+    provideEffects(ProductEffects),
   ],
 };
