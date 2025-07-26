@@ -12,3 +12,15 @@ export interface Product {
   image: string;
   rating: Raiting;
 }
+
+export interface FiliterData {
+  sort: Sort;
+  searchText: string;
+}
+
+export enum Sort {
+  PRICE_LOW = 'PRICE_LOW',
+  PRICE_HIGH = 'PRICE_HIGH',
+  NAME_ASC = 'NAME_ASC',
+  NAME_DESC = 'NAME_DESC',
+}
