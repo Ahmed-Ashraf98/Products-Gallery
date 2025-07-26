@@ -9,6 +9,7 @@ import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { environment } from './environment/environment.prod';
+import { BASE_URL } from './token/app.tokens';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,7 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(appRoutes),
     provideHttpClient(withFetch()),
-    { provide: 'BASE_URL', useValue: environment.apiUrl },
+    { provide: BASE_URL, useValue: environment.apiUrl },
     providePrimeNG({
       theme: {
         preset: Aura,
