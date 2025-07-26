@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { initialProductState, ProductState } from './product.state';
+import { initialProductState } from './product.state';
 import * as ProductActions from './product.actions';
 
 export const productReducer = createReducer(
@@ -33,5 +33,10 @@ export const productReducer = createReducer(
   on(ProductActions.setError, (state, { error }) => ({
     ...state,
     error,
+  })),
+
+  on(ProductActions.clearError, (state) => ({
+    ...state,
+    error: null,
   }))
 );

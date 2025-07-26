@@ -14,7 +14,7 @@ export class ProductsService {
     return this._httpClient.get<Product[]>(`${this._baseUrl}/products`);
   }
 
-  getProductById(id: string) {
+  getProductById(id: number) {
     return this._httpClient.get<Product>(`${this._baseUrl}/products/${id}`);
   }
 }

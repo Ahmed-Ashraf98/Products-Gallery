@@ -4,6 +4,18 @@ import { Product } from 'src/app/features/product/product.model';
 // Load Products
 export const loadProducts = createAction('[Product] Load Products');
 
+// Load Current Products
+export const loadCurrentProducts = createAction(
+  '[Product] Load Products',
+  props<{ id: number }>()
+);
+
+// Set Products
+export const setProducts = createAction(
+  '[Product] Set Products',
+  props<{ products: Product[] }>()
+);
+
 // Filter Products
 export const filiterProducts = createAction(
   '[Product] Filiter Products',
@@ -32,6 +44,9 @@ export const setError = createAction(
   '[Product] Set Error',
   props<{ error: string }>()
 );
+
+// Set Error
+export const clearError = createAction('[Product] Clear Error');
 
 // Clear Filtered Products
 export const clearFilter = createAction('[Product] Clear Filter');
