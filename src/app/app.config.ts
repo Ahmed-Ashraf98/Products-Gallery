@@ -10,6 +10,8 @@ import Aura from '@primeng/themes/aura';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { environment } from './environment/environment.prod';
 import { BASE_URL } from './token/app.tokens';
+import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,5 +28,7 @@ export const appConfig: ApplicationConfig = {
         },
       },
     }),
+    provideStore({}),
+    provideEffects(),
   ],
 };
