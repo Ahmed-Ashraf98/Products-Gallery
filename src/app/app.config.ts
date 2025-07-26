@@ -7,12 +7,16 @@ import {
 } from '@angular/platform-browser';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { environment } from './environment/environment.prod';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(withEventReplay()),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(appRoutes),
+    provideHttpClient(withFetch()),
+    { provide: 'BASE_URL', useValue: environment.apiUrl },
     providePrimeNG({
       theme: {
         preset: Aura,
