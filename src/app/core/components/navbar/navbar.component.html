@@ -1,0 +1,17 @@
+<nav
+  class="flex items-center justify-between p-4 shadow bg-white dark:bg-gray-900"
+>
+  <h1 class="text-lg font-semibold text-gray-800 dark:text-white">
+    Route E Commerce
+  </h1>
+
+  <p-toggleswitch [(ngModel)]="themeVal" (ngModelChange)="toggleTheme()">
+    <ng-template #handle>
+      <i
+        class="pi !text-xs"
+        [class.pi-moon]="themeVal"
+        [class.pi-sun]="!themeVal"
+      ></i>
+    </ng-template>
+  </p-toggleswitch>
+</nav>
