@@ -1,6 +1,11 @@
 <!-- Search -->
 <p-inputgroup>
-  <input pInputText placeholder="Keyword" (change)="onSearchChange()" />
+  <input
+    pInputText
+    placeholder="Keyword"
+    [(ngModel)]="searchText"
+    (input)="onSearchChange()"
+  />
   <p-inputgroup-addon>
     <p-button icon="pi pi-search" severity="secondary" variant="text" />
   </p-inputgroup-addon>

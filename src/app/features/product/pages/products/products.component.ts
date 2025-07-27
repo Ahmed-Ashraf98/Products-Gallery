@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Product, Sort } from '../../product.model';
+import { FiliterData, Product, Sort } from '../../product.model';
 import * as ProductActions from '../../../../store/product/product.actions';
 import * as ProductSelectors from '../../../../store/product/product.selectors';
 import { Observable } from 'rxjs';
@@ -11,6 +11,7 @@ import { AsyncPipe } from '@angular/common';
 import { LoadingProductCardComponent } from '../../components/loadingProductCard/loadingProductCard.component';
 import { SearchInputComponent } from '../../components/searchInput/searchInput.component';
 import { SortInputComponent } from '../../components/sortInput.component';
+import { NoDataComponent } from 'src/app/shared/components/noData/no-data.component';
 
 @Component({
   selector: 'app-products',
@@ -21,6 +22,7 @@ import { SortInputComponent } from '../../components/sortInput.component';
     LoadingProductCardComponent,
     SearchInputComponent,
     SortInputComponent,
+    NoDataComponent,
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
@@ -33,6 +35,8 @@ export class ProductsComponent implements OnInit {
   products$!: Observable<Product[]>;
   isLoading$!: Observable<boolean>;
   error$!: Observable<string | null>;
+
+  filterObj: FiliterData = {} as FiliterData;
 
   getProducts() {
     this.products$ = this._store.select(ProductSelectors.selectProducts);
@@ -54,9 +58,29 @@ export class ProductsComponent implements OnInit {
     this._router.navigate(['main/products', productId]);
   }
 
-  updateSearchFilter(searchText: string) {}
+  updateSearchFilter(searchText: string) {
+    this.filterObj = {
+      ...this.filterObj,
+      searchText: searchText,
+    };
 
-  updateSortFilter(sortOption: Sort | null) {}
+    this._store.dispatch(
+      ProductActions.filiterProducts({ filterObj: this.filterObj })
+    );
+  }
+
+  updateSortFilter(sortOption: Sort | null) {
+    this.filterObj = {
+      ...this.filterObj,
+      sort: sortOption,
+    };
+
+    console.log(this.filterObj);
+
+    this._store.dispatch(
+      ProductActions.filiterProducts({ filterObj: this.filterObj })
+    );
+  }
 
   ngOnInit(): void {
     this.fetchAllProducts();

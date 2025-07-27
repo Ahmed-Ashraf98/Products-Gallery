@@ -5,7 +5,7 @@ export const selectProductState =
   createFeatureSelector<ProductState>('product');
 
 export const selectProducts = createSelector(selectProductState, (state) =>
-  state.filteredProducts.length > 0 ? state.filteredProducts : state.products
+  state.isFilterApplied ? state.filteredProducts : state.products
 );
 
 export const selectCurrentProduct = createSelector(

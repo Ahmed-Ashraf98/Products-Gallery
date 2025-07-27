@@ -11,8 +11,8 @@ import { Sort } from '../product.model';
   styleUrl: './sortInput.component.scss',
 })
 export class SortInputComponent {
-  selectedSort: Sort | null = null;
-  sortOptions = [
+  selectedSort!: { label: string; value: Sort };
+  sortOptions: { label: string; value: Sort }[] = [
     { label: 'Price - Low', value: Sort.PRICE_LOW },
     { label: 'Price - High', value: Sort.PRICE_HIGH },
     { label: 'Name - Asc', value: Sort.NAME_ASC },
@@ -22,6 +22,6 @@ export class SortInputComponent {
   onSort = output<Sort | null>();
 
   onSortChange() {
-    this.onSort.emit(this.selectedSort);
+    this.onSort.emit(this.selectedSort.value);
   }
 }

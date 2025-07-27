@@ -14,7 +14,7 @@ export interface Product {
 }
 
 export interface FiliterData {
-  sort: Sort;
+  sort: Sort | null;
   searchText: string;
 }
 

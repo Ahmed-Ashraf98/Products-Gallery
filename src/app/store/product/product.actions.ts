@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Product } from 'src/app/features/product/product.model';
+import { FiliterData, Product } from 'src/app/features/product/product.model';
 
 // Load Products
 export const loadProducts = createAction('[Product] Load Products');
@@ -19,7 +19,7 @@ export const setProducts = createAction(
 // Filter Products
 export const filiterProducts = createAction(
   '[Product] Filiter Products',
-  props<{ filterObj: any }>()
+  props<{ filterObj: FiliterData }>()
 );
 
 // Set Current Product

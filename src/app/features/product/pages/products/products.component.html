@@ -21,13 +21,16 @@
       <div class="text-center text-red-600 dark:text-red-400 text-lg py-10">
         Failed to load product. Please try again.
       </div>
-      } @else if (!(isLoading$ | async) && !(error$ | async) ) { @for (product
-      of products$ | async; track product.id) {
+      } @else if ( (products$ | async)!.length > 0) { @for (product of products$
+      | async; track product.id) {
       <app-product-card
         [product]="product"
         (onViewClick)="goToProductDetailsPage($event)"
       ></app-product-card>
       } }
     </div>
+    @if ( (products$ | async)!.length == 0 ){
+    <app-no-data></app-no-data>
+    }
   </div>
 </div>

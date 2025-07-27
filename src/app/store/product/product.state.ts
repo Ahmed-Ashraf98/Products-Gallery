@@ -5,6 +5,7 @@ export interface ProductState {
   filteredProducts: Product[];
   currentProduct: Product | null;
   isLoading: boolean;
+  isFilterApplied: boolean;
   error: string | null;
 }
 
@@ -13,5 +14,6 @@ export const initialProductState: ProductState = {
   filteredProducts: [],
   currentProduct: null,
   isLoading: false,
+  isFilterApplied: false,
   error: null,
 };
