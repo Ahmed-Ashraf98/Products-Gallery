@@ -9,9 +9,9 @@ It includes filtering, sorting, search functionality, product rating display, da
 
 ## 📸 Screenshots / Demo
 
-| Light Mode                      | Dark Mode                     |
-| ------------------------------- | ----------------------------- |
-| ![light](screenshots/light.png) | ![dark](screenshots/dark.png) |
+| Light Mode                                                                                                                           | Dark Mode                     |
+| -----------------------------------------------------------------------------------------------------------------------------------  | ----------------------------- |
+|  <img width="1337" height="633" alt="image" src="https://github.com/user-attachments/assets/4dcc5a81-b418-4d77-897b-913ecda28181" /> | <img width="1328" height="627" alt="image" src="https://github.com/user-attachments/assets/a58f3a4f-d11b-4d81-9e42-ba675acccb85" /> |
 
 > 🧪 _To preview locally:_
 
