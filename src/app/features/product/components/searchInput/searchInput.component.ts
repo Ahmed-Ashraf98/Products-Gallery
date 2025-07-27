@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, effect, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { InputGroup } from 'primeng/inputgroup';
@@ -20,9 +20,15 @@ import { ButtonModule } from 'primeng/button';
 })
 export class SearchInputComponent {
   searchText = '';
-
+  isReset = input<boolean>(false);
   onSearch = output<string>();
-
+  constructor() {
+    effect(() => {
+      if (this.isReset()) {
+        this.searchText = '';
+      }
+    });
+  }
   onSearchChange() {
     this.onSearch.emit(this.searchText);
   }

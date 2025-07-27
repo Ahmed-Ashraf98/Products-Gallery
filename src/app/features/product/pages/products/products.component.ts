@@ -37,6 +37,8 @@ export class ProductsComponent implements OnInit {
   error$!: Observable<string | null>;
 
   filterObj: FiliterData = {} as FiliterData;
+  isResetSort = false;
+  isResetSearch = false;
 
   getProducts() {
     this.products$ = this._store.select(ProductSelectors.selectProducts);
@@ -75,11 +77,19 @@ export class ProductsComponent implements OnInit {
       sort: sortOption,
     };
 
-    console.log(this.filterObj);
-
     this._store.dispatch(
       ProductActions.filiterProducts({ filterObj: this.filterObj })
     );
+  }
+
+  onResetFilters() {
+    this.filterObj = {
+      searchText: '',
+      sort: null,
+    };
+    this.isResetSearch = true;
+    this.isResetSort = true;
+    this._store.dispatch(ProductActions.clearFilter());
   }
 
   ngOnInit(): void {

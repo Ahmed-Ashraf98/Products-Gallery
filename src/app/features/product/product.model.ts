@@ -24,3 +24,8 @@ export enum Sort {
   NAME_ASC = 'NAME_ASC',
   NAME_DESC = 'NAME_DESC',
 }
+
+export interface SortOption {
+  label: string;
+  value: Sort;
+}

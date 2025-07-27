@@ -7,8 +7,21 @@
     <div
       class="flex flex-wrap justify-center items-center gap-2 bg-white dark:bg-gray-900 p-4 rounded-xl shadow-sm mb-6"
     >
-      <app-search-input (onSearch)="updateSearchFilter($event)" />
-      <app-sort-input (onSort)="updateSortFilter($event)" />
+      <app-search-input
+        [isReset]="isResetSearch"
+        (onSearch)="updateSearchFilter($event)"
+      />
+      <app-sort-input
+        [isReset]="isResetSort"
+        (onSort)="updateSortFilter($event)"
+      />
+      <button
+        (click)="onResetFilters()"
+        class="inline-flex items-center gap-2 px-4 py-2 bg-red-500 text-white text-sm font-medium rounded-lg shadow hover:bg-red-600 transition"
+      >
+        <i class="pi pi-times text-sm"></i>
+        Clear Filters
+      </button>
     </div>
 
     <div
@@ -21,8 +34,8 @@
       <div class="text-center text-red-600 dark:text-red-400 text-lg py-10">
         Failed to load product. Please try again.
       </div>
-      } @else if ( (products$ | async)!.length > 0) { @for (product of products$
-      | async; track product.id) {
+      } @else if ( !(isLoading$ | async) &&(products$ | async)!.length > 0) {
+      @for (product of products$ | async; track product.id) {
       <app-product-card
         [product]="product"
         (onViewClick)="goToProductDetailsPage($event)"
