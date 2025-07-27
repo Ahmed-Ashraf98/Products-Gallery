@@ -10,6 +10,7 @@ import { Rating } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
 import { ProductDetailsLoaderComponent } from '../../components/productDetailsLoader/product-details-loader.component';
 import { ButtonModule } from 'primeng/button';
+import { CustomRaitingComponent } from 'src/app/shared/components/customRaiting/customRaiting.component';
 @Component({
   selector: 'app-product-details',
   imports: [
@@ -18,6 +19,7 @@ import { ButtonModule } from 'primeng/button';
     FormsModule,
     ProductDetailsLoaderComponent,
     ButtonModule,
+    CustomRaitingComponent,
   ],
   templateUrl: './productDetails.component.html',
   styleUrl: './productDetails.component.scss',

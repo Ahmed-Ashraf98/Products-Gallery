@@ -15,7 +15,7 @@
   <div class="text-center text-red-600 dark:text-red-400 text-lg py-10">
     Failed to load product. Please try again.
   </div>
-  } @else {
+  } @else if (!(isLoading$ | async)){
   <div
     class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-start"
   >
@@ -41,12 +41,7 @@
       </h1>
 
       <div class="flex items-center gap-3">
-        <p-rating
-          [readonly]="true"
-          [stars]="5"
-          [ngModel]="product.rating.rate"
-          class="text-yellow-500 dark:text-yellow-400"
-        ></p-rating>
+        <app-custom-raiting [rating]="product.rating.rate" />
         <span class="text-sm text-gray-500 dark:text-gray-400">
           ({{ product.rating.count }} reviews)
         </span>

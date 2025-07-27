@@ -1,0 +1,10 @@
+<div class="flex gap-1">
+  @for (star of [1, 2, 3, 4, 5]; track $index) {<i
+    class="pi text-sm"
+    [class.pi-star-fill]="rating() >= star"
+    [class.pi-star-half-fill]="rating() >= star - 0.5 && rating() < star"
+    [class.pi-star]="rating() < star - 0.5"
+    [style.color]="rating() >= star - 0.5 ? '#FACC15' : '#CBD5E1'"
+  ></i
+  >}
+</div>

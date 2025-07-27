@@ -30,16 +30,11 @@
       ${{ product().price }}
     </span>
 
-    <div class="raiting-wrapper flex">
+    <div class="raiting-wrapper flex items-center justify-center">
       <span class="text-sm text-gray-500 dark:text-gray-400 p-2">
         ( {{ product().rating.rate }} )
       </span>
-      <p-rating
-        [readonly]="true"
-        [stars]="5"
-        [ngModel]="product().rating.rate"
-        class="custom-rate-icon"
-      ></p-rating>
+      <app-custom-raiting [rating]="product().rating.rate" />
     </div>
   </div>
 
